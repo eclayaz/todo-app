@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { history } from '../helpers';
 import { alertActions } from '../actions';
 import { PrivateRoute } from '../components';
-import { LoginPage, HomePage, RegisterPage } from '../Pages';
+import { LoginPage, HomePage, RegisterPage, ProfilePage } from '../Pages';
 
 function App() {
   const alert = useSelector((state) => state.alert);
@@ -27,6 +27,7 @@ function App() {
           <Router history={history}>
             <Switch>
               <PrivateRoute exact path="/" component={HomePage} />
+              <PrivateRoute exact path="/profile" component={ProfilePage} />
               <Route path="/login" component={LoginPage} />
               <Route path="/register" component={RegisterPage} />
               <Redirect from="*" to="/" />
