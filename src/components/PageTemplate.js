@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SideBar from '../components';
 
 export const PageTemplate = function ({ children, user }) {
@@ -8,4 +9,8 @@ export const PageTemplate = function ({ children, user }) {
       {children}
     </div>
   );
+};
+
+PageTemplate.propTypes = {
+  user: PropTypes.object.isRequired,
 };

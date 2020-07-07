@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 export default function SideBar({ user }) {
@@ -27,3 +28,7 @@ export default function SideBar({ user }) {
     </div>
   );
 }
+
+SideBar.propTypes = {
+  user: PropTypes.object.isRequired,
+};
