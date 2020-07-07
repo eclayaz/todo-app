@@ -22,15 +22,12 @@ function login(username, password) {
   return fetch(`${config.apiUrl}/users/authenticate`, requestOptions)
     .then(handleResponse)
     .then((user) => {
-      // store user details and jwt token in local storage to keep user logged in between page refreshes
       localStorage.setItem('user', JSON.stringify(user));
-
       return user;
     });
 }
 
 function logout() {
-  // remove user from local storage to log user out
   localStorage.removeItem('user');
 }
 
@@ -78,7 +75,6 @@ function update(user) {
   );
 }
 
-// prefixed function name with underscore because delete is a reserved word in javascript
 function _delete(id) {
   const requestOptions = {
     method: 'DELETE',
@@ -95,9 +91,7 @@ function handleResponse(response) {
     const data = text && JSON.parse(text);
     if (!response.ok) {
       if (response.status === 401) {
-        // auto logout if 401 response returned from api
         logout();
-        //location.reload(true);
       }
 
       const error = (data && data.message) || response.statusText;
