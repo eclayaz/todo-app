@@ -18,6 +18,8 @@ export function configureFakeBackend() {
             return register();
           case url.endsWith('/users') && method === 'GET':
             return getUsers();
+          case url.match(/\/users\/\d+$/) && method === 'PUT':
+            return updateUser();
           case url.match(/\/users\/\d+$/) && method === 'DELETE':
             return deleteUser();
           default:
@@ -61,6 +63,14 @@ export function configureFakeBackend() {
         if (!isLoggedIn()) return unauthorized();
 
         return ok(users);
+      }
+
+      function updateUser() {
+        if (!isLoggedIn()) return unauthorized();
+        const user = body;
+        users = users.map((x) => (x.id === idFromUrl() ? user : x));
+        localStorage.setItem('users', JSON.stringify(users));
+        return ok();
       }
 
       function deleteUser() {

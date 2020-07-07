@@ -8,6 +8,7 @@ export const userActions = {
   logout,
   register,
   getAll,
+  update,
   delete: _delete,
 };
 
@@ -68,6 +69,33 @@ function register(user) {
   }
   function failure(error) {
     return { type: userConstants.REGISTER_FAILURE, error };
+  }
+}
+
+function update(user) {
+  return (dispatch) => {
+    dispatch(request(user));
+
+    userService.update(user).then(
+      (user) => {
+        dispatch(success());
+        dispatch(alertActions.success('Image uploaded successful'));
+      },
+      (error) => {
+        dispatch(failure(error.toString()));
+        dispatch(alertActions.error(error.toString()));
+      }
+    );
+  };
+
+  function request(user) {
+    return { type: userConstants.IMAGE_UPLOAD_REQUEST, user };
+  }
+  function success(user) {
+    return { type: userConstants.IMAGE_UPLOAD_SUCCESS, user };
+  }
+  function failure(error) {
+    return { type: userConstants.IMAGE_UPLOAD_FAILURE, error };
   }
 }
 
