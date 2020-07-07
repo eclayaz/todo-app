@@ -4,17 +4,9 @@ import { Link } from 'react-router-dom';
 
 export default function SideBar({ user }) {
   return (
-    <div
-      style={{
-        padding: '10px',
-        width: '150px',
-        background: '#f0f0f0',
-        marginRight: '50px',
-      }}
-      className="sidenav"
-    >
-      <h5>Hi {user.firstName}</h5>
-      <ul style={{ listStyleType: 'none', padding: 0 }}>
+    <div className="side-nav">
+      <h5 className="title-text">Hello {user.firstName}!</h5>
+      <ul className="list">
         <li>
           <Link to="/">Home</Link>
         </li>

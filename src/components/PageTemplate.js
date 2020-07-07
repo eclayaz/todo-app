@@ -4,7 +4,7 @@ import SideBar from '../components';
 
 export const PageTemplate = function ({ children, user }) {
   return (
-    <div style={{ display: 'flex' }}>
+    <div className="page-template">
       <SideBar user={user} />
       {children}
     </div>

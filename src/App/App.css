@@ -1,0 +1,34 @@
+.page {
+  background: white;
+  padding: 20px;
+}
+.page .page-template {
+  display: flex;
+}
+.page .page-template .home-page {
+  flex-direction: column;
+}
+.page .page-template .side-nav {
+  padding: 10px;
+  width: 150px;
+  background: #f0f0f0;
+  margin-right: 50px;
+}
+.page .page-template .side-nav .list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.page .page-template .side-nav .list li {
+  padding: 10px;
+}
+.page .page-template .side-nav .list li:last-child a {
+  color: gray;
+}
+.page .link-btn {
+  margin-left: 5px;
+}
+
+.page .profile-image .image-upload-btn {
+  margin-top: 10px;
+}

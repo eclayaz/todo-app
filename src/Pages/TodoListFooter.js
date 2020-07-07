@@ -4,7 +4,7 @@ import { todoVisibilityFilters } from '../constants';
 
 const Footer = () => (
   <div>
-    <span>Show: </span>
+    <span>Filter: </span>
     <FilterLink filter={todoVisibilityFilters.SHOW_ALL}>All</FilterLink>
     <FilterLink filter={todoVisibilityFilters.SHOW_ACTIVE}>Active</FilterLink>
     <FilterLink filter={todoVisibilityFilters.SHOW_COMPLETED}>
