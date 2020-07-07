@@ -1,15 +1,12 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { TodoPage } from './';
-import SideBar from '../components';
+import { PageTemplate } from '../components';
 
-function HomePage() {
-  const user = useSelector((state) => state.authentication.user);
+function HomePage({ user }) {
   return (
-    <div style={{ display: 'flex' }}>
-      <SideBar user={user} />
+    <PageTemplate user={user}>
       <TodoPage />
-    </div>
+    </PageTemplate>
   );
 }
 

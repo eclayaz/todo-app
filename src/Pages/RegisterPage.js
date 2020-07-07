@@ -15,7 +15,6 @@ function RegisterPage() {
   const registering = useSelector((state) => state.registration.registering);
   const dispatch = useDispatch();
 
-  // reset login status
   useEffect(() => {
     dispatch(userActions.logout());
   }, []);

@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import SideBar from '../components';
+import { PageTemplate } from '../components';
 import ImageUploading from 'react-images-uploading';
 
-function ProfilePage() {
+function ProfilePage({ user }) {
   const defaultImage = 'http://placehold.it/380x500';
-  const user = useSelector((state) => state.authentication.user);
   const [image, setImage] = useState(defaultImage);
   const onChange = (imageList) => {
     if (imageList.length === 0) {
@@ -15,8 +13,7 @@ function ProfilePage() {
   };
 
   return (
-    <div style={{ display: 'flex' }}>
-      <SideBar user={user} />
+    <PageTemplate user={user}>
       <div className="row">
         <div className="col-sm-6 col-md-4">
           <ImageUploading singleImage={true} onChange={onChange}>
@@ -63,7 +60,7 @@ function ProfilePage() {
           <p>Username : {user.username}</p>
         </div>
       </div>
-    </div>
+    </PageTemplate>
   );
 }
 

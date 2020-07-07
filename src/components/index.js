@@ -1,4 +1,4 @@
 export * from './PrivateRoute';
-export * from './Menu';
 export * from './AddTodo';
+export * from './PageTemplate';
 export { default } from './SideBar';
