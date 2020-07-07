@@ -41,3 +41,14 @@ export function users(state = {}, action) {
       return state;
   }
 }
+
+export function image(state = {}, action) {
+  switch (action.type) {
+    case 'SET_PROFILE_PICTURE':
+      return {
+        picture: action.image,
+      };
+    default:
+      return state;
+  }
+}

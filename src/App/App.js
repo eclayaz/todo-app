@@ -3,27 +3,16 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { history } from '../helpers';
-import { alertActions, userActions } from '../actions';
+import { alertActions } from '../actions';
 import { PrivateRoute } from '../components';
-import { LoginPage, HomePage, RegisterPage, ProfilePage } from '../Pages';
+import { LoginPage, HomePage, RegisterPage } from '../Pages';
+import ProfilePage from '../Pages/ProfilePage';
 
 import './App.css';
 
 function App() {
   const alert = useSelector((state) => state.alert);
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   console.log('dd');
-
-  //   const user = {
-  //     firstName: 'Nadeesha',
-  //     lastName: 'Dilruwan',
-  //     username: 'admin',
-  //     password: 'admin',
-  //   };
-  //   dispatch(userActions.register(user));
-  // }, []);
 
   useEffect(() => {
     history.listen((location, action) => {

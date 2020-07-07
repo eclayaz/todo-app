@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import { PageTemplate } from '../components';
 import ImageUploading from 'react-images-uploading';
+import { userActions } from '../actions';
 
-function ProfilePage({ user }) {
+function ProfilePage({ user, dispatch, image }) {
   const defaultImage = 'http://placehold.it/380x500';
-  const [image, setImage] = useState(defaultImage);
+
   const onChange = (imageList) => {
     if (imageList.length === 0) {
-      return setImage(defaultImage);
+      return dispatch(userActions.setProfilePicture(defaultImage));
     }
-    setImage(imageList[0]['dataURL']);
+    dispatch(userActions.setProfilePicture(imageList[0]['dataURL']));
   };
 
   return (
@@ -24,7 +26,7 @@ function ProfilePage({ user }) {
             <div className="">
               <div className="profile-image">
                 <img
-                  src={image}
+                  src={image ? image : defaultImage}
                   alt="http://placehold.it/380x500"
                   className="img-thumbnail"
                 />
@@ -60,4 +62,8 @@ function ProfilePage({ user }) {
   );
 }
 
-export { ProfilePage };
+const mapStateToProps = (state) => ({
+  image: state.image.picture,
+});
+
+export default connect(mapStateToProps)(ProfilePage);

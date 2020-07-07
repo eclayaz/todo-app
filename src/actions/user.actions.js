@@ -10,6 +10,7 @@ export const userActions = {
   getAll,
   update,
   delete: _delete,
+  setProfilePicture,
 };
 
 function login(username, password) {
@@ -70,6 +71,13 @@ function register(user) {
   function failure(error) {
     return { type: userConstants.REGISTER_FAILURE, error };
   }
+}
+
+function setProfilePicture(image) {
+  return {
+    type: 'SET_PROFILE_PICTURE',
+    image,
+  };
 }
 
 function update(user) {
