@@ -41,16 +41,3 @@ export function users(state = {}, action) {
       return state;
   }
 }
-
-export function update(state = {}, action) {
-  switch (action.type) {
-    case userConstants.IMAGE_UPLOAD_REQUEST:
-      return { registering: true };
-    case userConstants.IMAGE_UPLOAD_SUCCESS:
-      return {};
-    case userConstants.IMAGE_UPLOAD_FAILURE:
-      return {};
-    default:
-      return state;
-  }
-}

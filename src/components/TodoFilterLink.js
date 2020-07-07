@@ -1,17 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Link = ({ active, children, onClick }) => (
-  <button
-    onClick={onClick}
-    disabled={active}
-    style={{
-      marginLeft: '4px',
-    }}
-  >
-    {children}
-  </button>
-);
+function Link({ active, children, onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      disabled={active}
+      style={{
+        marginLeft: '4px',
+      }}
+    >
+      {children}
+    </button>
+  );
+}
 
 Link.propTypes = {
   active: PropTypes.bool.isRequired,
@@ -19,4 +21,4 @@ Link.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-export default Link;
+export { Link };

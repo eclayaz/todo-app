@@ -15,7 +15,7 @@ function App() {
     history.listen((location, action) => {
       dispatch(alertActions.clear());
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="jumbotron">

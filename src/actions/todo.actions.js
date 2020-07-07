@@ -1,22 +1,19 @@
+import { v4 as uuidv4 } from 'uuid';
 import { todoConstants } from '../constants';
 import { alertActions } from '.';
 import { history } from '../helpers';
 
 export const todoActions = {
   create,
-  // update,
-  // delete: _delete,
   getAll,
-  // getOne,
+  setVisibilityFilter,
+  toggleTodo,
 };
-
-let id = 1;
 
 function create(todo) {
   return (dispatch) => {
-    dispatch(request({ id, text: todo }));
+    dispatch(request({ id: uuidv4(), text: todo }));
     dispatch(success());
-    id++;
     history.push('/');
     dispatch(alertActions.success('Create Todo successful'));
   };
@@ -45,12 +42,16 @@ function getAll(todo) {
   }
 }
 
-export const setVisibilityFilter = (filter) => ({
-  type: 'SET_VISIBILITY_FILTER',
-  filter,
-});
+function setVisibilityFilter(filter) {
+  return {
+    type: 'SET_VISIBILITY_FILTER',
+    filter,
+  };
+}
 
-export const toggleTodo = (id) => ({
-  type: 'TOGGLE_TODO',
-  id,
-});
+function toggleTodo(id) {
+  return {
+    type: 'TOGGLE_TODO',
+    id,
+  };
+}
