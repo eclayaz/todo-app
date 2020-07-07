@@ -5,7 +5,7 @@ import TodoListFooter from './TodoListFooter';
 
 function TodoPage() {
   return (
-    <div className="col-lg-8 offset-lg-2">
+    <div>
       <h3>Todo page</h3>
       <hr />
       <AddTodo />
