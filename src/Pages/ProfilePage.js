@@ -14,56 +14,47 @@ function ProfilePage({ user }) {
 
   return (
     <PageTemplate user={user}>
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-6 col-md-4">
-            <ImageUploading singleImage={true} onChange={onChange}>
-              {({ imageList, onImageUpload }) => (
-                <div className="row">
-                  <div className="profile-image">
-                    <img
-                      src={image}
-                      alt="http://placehold.it/380x500"
-                      className="img-thumbnail"
-                    />
-                    {imageList.length === 0 ? (
-                      <button
-                        className="btn btn-success image-upload-btn"
-                        onClick={onImageUpload}
-                      >
-                        Upload
-                      </button>
-                    ) : null}
-                  </div>
-
-                  {imageList.map((image) => (
-                    <div key={image.key}>
-                      <div>
-                        <button
-                          className="btn btn-secondary"
-                          onClick={image.onUpdate}
-                        >
-                          Update
-                        </button>
-                        &nbsp;
-                        <button
-                          className="btn btn-warning"
-                          onClick={image.onRemove}
-                        >
-                          Remove
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </ImageUploading>
-          </div>
-          <div className="col-sm-6 col-md-8">
-            <h4>{`${user.firstName} ${user.lastName}`}</h4>
-            <p>Username : {user.username}</p>
-          </div>
+      <div className="col-sm-8">
+        <div>
+          <h4>{`${user.firstName} ${user.lastName}`}</h4>
+          <p>Username : {user.username}</p>
         </div>
+        <ImageUploading singleImage={true} onChange={onChange}>
+          {({ imageList, onImageUpload }) => (
+            <div className="">
+              <div className="profile-image">
+                <img
+                  src={image}
+                  alt="http://placehold.it/380x500"
+                  className="img-thumbnail"
+                />
+                {imageList.length === 0 ? (
+                  <button
+                    className="btn btn-success image-upload-btn"
+                    onClick={onImageUpload}
+                  >
+                    Upload
+                  </button>
+                ) : null}
+              </div>
+
+              {imageList.map((image) => (
+                <div key={image.key}>
+                  <button
+                    className="btn btn-secondary"
+                    onClick={image.onUpdate}
+                  >
+                    Update
+                  </button>
+                  &nbsp;
+                  <button className="btn btn-warning" onClick={image.onRemove}>
+                    Remove
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+        </ImageUploading>
       </div>
     </PageTemplate>
   );

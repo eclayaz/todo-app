@@ -1,4 +1,16 @@
-let users = JSON.parse(localStorage.getItem('users')) || [];
+let users = JSON.parse(localStorage.getItem('users'));
+
+if (!users) {
+  const defaultUser = {
+    firstName: 'Nadeesha',
+    lastName: 'Dilruwan',
+    username: 'admin',
+    password: 'admin',
+  };
+  localStorage.setItem('users', JSON.stringify([defaultUser]));
+  users = [defaultUser];
+}
+
 export function configureFakeBackend() {
   let realFetch = window.fetch;
   window.fetch = function (url, opts) {
